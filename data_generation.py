@@ -101,7 +101,7 @@ class TelemetryGenerator:
 # --- Veri Üretim Süreci ---
 if __name__ == "__main__":
     generator = TelemetryGenerator()
-    dataset_size = 50000  # 3050 Ti için oldukça yeterli ve zengin bir sayı
+    dataset_size = 50000
 
     print(f"{dataset_size} satırlık telemetri veri seti üretiliyor...")
 

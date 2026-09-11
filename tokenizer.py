@@ -21,9 +21,9 @@ class BPETokenizer:
         self.reverse_vocab = {}  # id → token
         self.merges = []  # BPE birleştirme kuralları [(a,b) → ab]
 
-    # ─────────────────────────────────────────
+
     # ADIM 1: Corpus'u kelime frekanslarına çevir
-    # ─────────────────────────────────────────
+
     def _build_word_freqs(self, texts):
         """
         Her kelimeyi karakterlere böl, aralarına boşluk koy.
@@ -47,9 +47,9 @@ class BPETokenizer:
 
         return word_freqs
 
-    # ─────────────────────────────────────────
+
     # ADIM 2: Tüm çiftlerin frekansını say
-    # ─────────────────────────────────────────
+
     def _get_pair_freqs(self, word_freqs):
         """
         Hangi karakter çifti en sık yan yana geliyor?
@@ -68,9 +68,9 @@ class BPETokenizer:
 
         return pair_freqs
 
-    # ─────────────────────────────────────────
+
     # ADIM 3: En sık çifti birleştir
-    # ─────────────────────────────────────────
+
     def _merge_pair(self, pair, word_freqs):
         """
         En sık geçen çifti tüm kelimelerde birleştir.
@@ -90,9 +90,8 @@ class BPETokenizer:
 
         return new_word_freqs
 
-    # ─────────────────────────────────────────
+
     # ADIM 4: Ana eğitim döngüsü
-    # ─────────────────────────────────────────
     def train(self, texts):
         """
         BPE algoritmasını çalıştır:
@@ -148,9 +147,8 @@ class BPETokenizer:
 
         print(f"\n🏁 Eğitim tamamlandı! Final vocab boyutu: {len(self.vocab)}")
 
-    # ─────────────────────────────────────────
+
     # ADIM 5: Encode & Decode
-    # ─────────────────────────────────────────
     def encode(self, text):
         """Metni token id listesine çevir"""
         tokens = []
@@ -207,9 +205,8 @@ class BPETokenizer:
 
         return text.strip()
 
-    # ─────────────────────────────────────────
+
     # KAYDET & YÜKLE
-    # ─────────────────────────────────────────
     def save(self, path="tokenizer.json"):
         data = {
             "vocab_size": self.vocab_size,
