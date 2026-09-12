@@ -1,0 +1,15 @@
+"vocab_size"    : 2000,
+"embedding_dim" : 256,
+"num_heads"     : 4,
+"num_layers"    : 4,
+"block_size"    : 128,
+"dropout"       : 0.1,
+
+"batch_size"    : 32,
+"learning_rate" : 3e-4,
+"epochs"        : 5,
+"eval_interval" : 200,   # Her 200 step'te bir val loss hesapla
+"save_interval" : 500,   # Her 500 step'te bir checkpoint kaydet
+
+"train_split"   : 0.9,   # %90 train, %10 val
+"checkpoint_dir": "./checkpoints"
