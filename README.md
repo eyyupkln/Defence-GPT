@@ -364,4 +364,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ### 👤 Author
 
-**Eyyüp Kılın** — [GitHub](https://github.com/eyyupkln)
+**Eyyüp Kalan** — [GitHub](https://github.com/eyyupkln)
