@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Model checkpoints (büyük dosyalar)
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# Data (büyük veri dosyaları)
+data/
+*.jsonl
+
+# Tokenizer (eğitimle oluşan dosya)
+tokenizer.json
+
+# Logs
+*.log
+wandb/
+runs/
