@@ -8,7 +8,7 @@ def load_model(checkpoint_path, device):
     tokenizer=BPETokenizer.load("tokenizer.json")
 
     model=TelemetryGPT(
-        vocab_size=2000,
+        vocab_size=4000,
         embedding_dim=256,
         num_heads=4,
         num_layers=4,

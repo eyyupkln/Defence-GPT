@@ -5,7 +5,7 @@ import re
 
 
 class BPETokenizer:
-    def __init__(self, vocab_size=2000):
+    def __init__(self, vocab_size=4000):
         self.vocab_size = vocab_size
 
         # Özel tokenlar (bunlar her zaman vocab'da olacak)

@@ -132,14 +132,19 @@ class TelemetryGPT(nn.Module):
     @torch.no_grad()
     def generate(self, input_ids, max_new_tokens, temperature=1.0):
         for _ in range(max_new_tokens):
-            # Block size'ı aşarsa kırp
             current = input_ids[:, -self.block_size:]
-
             logits, _ = self.forward(current)
-            last_logits = logits[:, -1, :] / temperature
-            probs = F.softmax(last_logits, dim=-1)
-            next_token = torch.multinomial(probs, num_samples=1)
+            last_logits = logits[:, -1, :]
+
+            # argmax → deterministik, çeviri için doğru
+            next_token = torch.argmax(last_logits, dim=-1, keepdim=True)
+
             input_ids = torch.cat([input_ids, next_token], dim=1)
+
+            # <END> tokenı üretilince dur
+            end_id = 4  # <END> token id'si
+            if next_token.item() == end_id:
+                break
 
         return input_ids
 

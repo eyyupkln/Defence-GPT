@@ -11,7 +11,7 @@ with open("data/telemetry_dataset.jsonl", "r", encoding="utf-8") as f:
         texts.append(entry["full_text"])
 
 # Tokenizer'ı eğit
-tokenizer = BPETokenizer(vocab_size=2000)
+tokenizer = BPETokenizer(vocab_size=4000)
 tokenizer.train(texts)
 tokenizer.save("tokenizer.json")
 
