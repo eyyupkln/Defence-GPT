@@ -25,6 +25,7 @@ class TelemetryDataset(Dataset) :
 
         #Encode
         token_ids=self.tokenizer.encode(text)
+        token_ids = token_ids[:self.max_length]
         pad_id = self.tokenizer.special_tokens["<PAD>"]
         padding_length = self.max_length - len(token_ids)
         token_ids = token_ids + [pad_id] * padding_length

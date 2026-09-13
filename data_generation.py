@@ -61,11 +61,12 @@ class TelemetryGenerator:
         }
 
     def generate_log_entry(self):
-        # Rastgele bir senaryo seç
-        error_code = random.choice(list(self.scenarios.keys()))
+        error_code = random.choices(
+            list(self.scenarios.keys()),
+            weights=list(self.scenario_weights.values())
+        )[0]
         config = self.scenarios[error_code]
 
-        # Mantıklı aralıkta sensör değeri üret
         low, high = config["val_range"]
         val = random.uniform(low, high)
         if config["round_digits"] == 0:
@@ -73,23 +74,13 @@ class TelemetryGenerator:
         else:
             val = round(val, config["round_digits"])
 
-        # Hexadecimal donanım adresi ve Timestamp
         hex_code = f"0x{random.randint(0, 0xFFFFFF):06X}"
         time_str = datetime.now().strftime("%H:%M:%S")
 
-        # Ham telemetri logu
         raw_log = f"[{error_code}] {config['sensor']}={val}{config['unit']} | ADDR:{hex_code} | TS:{time_str}"
         explanation = config["template"](val)
 
-        # Decoder (GPT) Eğitimi İçin Birleşik Metin:
-        # GPT modelleri bir diziyi baştan sona tahmin ettiği için
-        # girdiyi ve hedefi özel bir ayraç ile tek bir metin yaparız.
         combined_text = f"<LOG> {raw_log} <SEP> {explanation} <END>"
-
-        error_code = random.choices(
-            list(self.scenarios.keys()),
-            weights=list(self.scenario_weights.values())
-        )[0]
 
         return {
             "input": raw_log,

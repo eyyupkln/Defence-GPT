@@ -53,10 +53,10 @@ def save_checkpoints(model,optimizer,epoch,step , loss,path):
 
 def load_checkpoint(model, optimizer, path, device):
     checkpoint = torch.load(path, map_location=device)
-    model.load_state_dict(checkpoint["model"])
-    optimizer.load_state_dict(checkpoint["optimizer"])
+    model.load_state_dict(checkpoint["Model"])
+    optimizer.load_state_dict(checkpoint["Optimizer"])
     print(f"Checkpoint yüklendi: {path}")
-    return checkpoint["epoch"], checkpoint["step"]
+    return checkpoint["Epoch"], checkpoint["Step"]
 
 
 def train ():
