@@ -20,7 +20,7 @@ test = "<LOG> [BAT_CRIT] BAT_VOLT=9.87V | ADDR:0xA3F2C1 | TS:14:32:09 <SEP>"
 encoded = tokenizer.encode(test)
 decoded = tokenizer.decode(encoded)
 
-print(f"\n📥 Orijinal : {test}")
-print(f"🔢 Encoded  : {encoded}")
-print(f"📤 Decoded  : {decoded}")
-print(f"📊 Token sayısı: {len(encoded)}")
+print(f"\n Orijinal : {test}")
+print(f" Encoded  : {encoded}")
+print(f" Decoded  : {decoded}")
+print(f" Token sayısı: {len(encoded)}")

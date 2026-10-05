@@ -100,7 +100,7 @@ class BPETokenizer:
         3. Birleştir
         4. vocab_size'a ulaşana kadar tekrarla
         """
-        print("📖 Kelime frekansları hesaplanıyor...")
+        print("Kelime frekansları hesaplanıyor...")
         word_freqs = self._build_word_freqs(texts)
 
         # Başlangıç vocab'ı: tüm tekil karakterler
@@ -114,9 +114,9 @@ class BPETokenizer:
         self.vocab = {token: idx for idx, token in enumerate(all_tokens)}
         self.reverse_vocab = {idx: token for token, idx in self.vocab.items()}
 
-        print(f"🔤 Başlangıç vocab boyutu: {len(self.vocab)}")
-        print(f"🎯 Hedef vocab boyutu: {self.vocab_size}")
-        print("⚙️  BPE birleştirmeleri başlıyor...\n")
+        print(f"Başlangıç vocab boyutu: {len(self.vocab)}")
+        print(f"Hedef vocab boyutu: {self.vocab_size}")
+        print("BPE birleştirmeleri başlıyor...\n")
 
         # BPE ana döngüsü
         while len(self.vocab) < self.vocab_size:
@@ -143,9 +143,9 @@ class BPETokenizer:
 
             if len(self.vocab) % 200 == 0:
                 print(
-                    f"  ✅ Vocab boyutu: {len(self.vocab)} | Son birleşme: {best_pair} → '{new_token}' (frekans: {best_freq})")
+                    f"   Vocab boyutu: {len(self.vocab)} | Son birleşme: {best_pair} → '{new_token}' (frekans: {best_freq})")
 
-        print(f"\n🏁 Eğitim tamamlandı! Final vocab boyutu: {len(self.vocab)}")
+        print(f"\n Eğitim tamamlandı! Final vocab boyutu: {len(self.vocab)}")
 
 
     # ADIM 5: Encode & Decode
@@ -216,7 +216,7 @@ class BPETokenizer:
         }
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-        print(f"💾 Tokenizer kaydedildi: {path}")
+        print(f" Tokenizer kaydedildi: {path}")
 
     @classmethod
     def load(cls, path="tokenizer.json"):
